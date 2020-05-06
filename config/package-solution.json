@@ -1,0 +1,12 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/spfx-build/package-solution.schema.json",
+  "solution": {
+    "name": "spfx-react-webpart-toastr-2019-and-online-client-side-solution",
+    "id": "c692e793-54bf-4043-8f7f-ef2ae9d7d8c9",
+    "version": "1.0.0.0",
+    "includeClientSideAssets": true
+  },
+  "paths": {
+    "zippedPackage": "solution/spfx-react-webpart-toastr-2019-and-online.sppkg"
+  }
+}
