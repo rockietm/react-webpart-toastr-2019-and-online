@@ -1,126 +1,151 @@
 @import '~@microsoft/sp-office-ui-fabric-core/dist/sass/SPFabricCore.scss';
 
-$ms-orangeLighter:              "[theme:orangeLighter, default:#ff8c00]";
-$ms-redDark:                    "[theme:redDark, default:#a80000]";
-$ms-green:                      "[theme:green, default:#107c10]";
-$ms-blue:                       "[theme:blue, default:#0078d7]";
+$ms-orangeLighter: "[theme:orangeLighter, default:#ff8c00]";
+$ms-redDark: "[theme:redDark, default:#a80000]";
+$ms-green: "[theme:green, default:#107c10]";
+$ms-blue: "[theme:blue, default:#0078d7]";
 
 //These 2 classes are outside the main namespace because they are top level
 // classes for the toasts
 .topRight {
-	top: 62px;
-	right: 12px;
+    top: 62px;
+    right: 12px;
 }
 
 .topLeft {
-	top: 62px;
-	left: 12px;
+    top: 62px;
+    left: 12px;
 }
-
 
 
 .helloWorld {
 
-
-	//Imitates much of the ms-Icon class from Office UI-Fabric but
-	// is designed to display without the <i>
-	.fabricIcon:before {
-		position: fixed;
-		font-family: FabricMDL2Icons;
-		font-style: normal;
-		font-weight: 400;
-		speak: none;
-		font-size: 28px;
-		margin: 4px 0 0 -36px;
-		-webkit-font-smoothing: antialiased;
-	}
-
-	.info {
-		background-color: $ms-blue;
-	}
-
-	.warning {
-		background-color: $ms-orangeLighter;
-	}
-
-	.error {
-		background-color: $ms-redDark;
-	}
-
-	.success {
-		background-color: $ms-green;
-	}
-
-
-
-  .container {
-    max-width: 700px;
-    margin: 0px auto;
-    box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.2), 0 25px 50px 0 rgba(0, 0, 0, 0.1);
-  }
-
-  .row {
-    @include ms-Grid-row;
-    @include ms-fontColor-white;
-    background-color: $ms-color-themeDark;
-    padding: 20px;
-  }
-
-  .column {
-    @include ms-Grid-col;
-    @include ms-lg10;
-    @include ms-xl8;
-    @include ms-xlPush2;
-    @include ms-lgPush1;
-  }
-
-  .title {
-    @include ms-font-xl;
-    @include ms-fontColor-white;
-  }
-
-  .subTitle {
-    @include ms-font-l;
-    @include ms-fontColor-white;
-  }
-
-  .description {
-    @include ms-font-l;
-    @include ms-fontColor-white;
-  }
-
-  .button {
-    // Our button
-    text-decoration: none;
-    height: 32px;
-
-    // Primary Button
-    min-width: 80px;
-    background-color: $ms-color-themePrimary;
-    border-color: $ms-color-themePrimary;
-    color: $ms-color-white;
-
-    // Basic Button
-    outline: transparent;
-    position: relative;
-    font-family: "Segoe UI WestEuropean","Segoe UI",-apple-system,BlinkMacSystemFont,Roboto,"Helvetica Neue",sans-serif;
-    -webkit-font-smoothing: antialiased;
-    font-size: $ms-font-size-m;
-    font-weight: $ms-font-weight-regular;
-    border-width: 0;
-    text-align: center;
-    cursor: pointer;
-    display: inline-block;
-    padding: 0 16px;
-
-    .label {
-      font-weight: $ms-font-weight-semibold;
-      font-size: $ms-font-size-m;
-      height: 32px;
-      line-height: 32px;
-      margin: 0 4px;
-      vertical-align: top;
-      display: inline-block;
+    :global .my-toast-info {
+        background-image: url("data:image/png;base64,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") !important;
+        background-position: left !important;
+        background-size: 18% !important;
+        padding-left: 65px !important;
     }
-  }
+
+    :global .my-toast-warning {
+        background-image: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAFwAAABcCAYAAADj79JYAAADIklEQVR4Xu3bvYoUQRTF8XN9Ak18EZONRFDMDcRoQ0Ew1tjAyCdQDE2UDYxMRJ/B9zASBNOSgW5pZnfsqu5bp+5dzsKySTG359d/mt7+MOiHKmDUaRoGgZMjELjAyQLkcSpc4GQB8jgVLnCyAHmcChc4WYA8ToULnCxAHqfCBU4WII9T4QInC5DHqXCBnxYopTwFcNfMzslObuNSFV5K+QbgDoCXZvbeTYH4QWnAp7rfALgJ4LuZPSA6uY3KBH6o+/70zX9lrTwF+FHdc20pK88Cvqx7Bk9ZeXjwE3WnrTwD+LLuAuDweyPrsTw0+BV1/wTwA8BD4N8zNamO5dHBj+u+APARwFsAtzNWHhb8RN3PzOxzKeUTgMcZK48MfqluM3tyqLqU8ihr5SHB/1f3fHqStfKo4CfrXoCnrDwceE3dmSuPCL5ad+bKQ4G31J218mjg1XVnrTwM+Ja6M1YeCby57oyVhwDfU3e2yqOAr9Y93c+c7/j8BvDczD5kq3w4eG3da+DTv/zhr7FEAF+te8JcrrtUeJZrLEPBa+uuBc9Q+WjwqrobwUNfYxkG3lJ3C3j0ykeCV9e9ATxs5UPAW+tuBY9c+Sjwpro3goesnA6+pe4t4FErHwHeXPcO8HCVU8G31r0VPGLlbPBNde8ED1U5DXxP3XvAo1XOBN9ctwN4mMop4Hvr3gseqXIW+K66ncBDVN4d3KPuCfwdgLPphsMfAK/N7Mt8A6Lmb4SntRjgu+uuwaxZE+GZxK7gXnXXYNauGV15b/Awdc87ZHTl3cC96665p5mh8p7grnU7gw87Y+kC7l23x2nhcf2jjuW9wF3r9jotXKKPOpa7g/eou/bY3LpuROU9wN3rboWsXT+iclfwTHUvThOpT2t5g1/1TnxtcFHWdX2H3w185Z34KJi129Ht7WZP8OtQ97xDulXuAl5KuQfgFYBbtQklWPfVzF54b6cLuPdGXefPEzh57wpc4GQB8jgVLnCyAHmcChc4WYA8ToULnCxAHqfCBU4WII9T4QInC5DHqXCBkwXI41S4wMkC5HEqXOBkAfI4FU4G/wtCspZ7f7xxowAAAABJRU5ErkJggg==") !important;
+        background-position: left !important;
+        background-size: 18% !important;
+        padding-left: 65px !important;
+    }
+
+    :global .my-toast-error {
+        background-image: url("data:image/png;base64,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") !important;
+        background-position: left !important;
+        background-size: 18% !important;
+        padding-left: 65px !important;
+    }
+
+    :global .my-toast-success {
+        background-image: url("data:image/png;base64,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") !important;
+        background-position: left !important;
+        background-size: 18% !important;
+        padding-left: 65px !important;
+    }
+
+    :global .my-toast-title {
+        font-family: "Segoe UI Web (West European)", Segoe UI, -apple-system, BlinkMacSystemFont, Roboto, Helvetica Neue, sans-serif;
+        font-size: 14px;
+        font-weight: 600;
+    }
+
+    :global .my-toast-message {
+        font-family: "Segoe UI Web (West European)", Segoe UI, -apple-system, BlinkMacSystemFont, Roboto, Helvetica Neue, sans-serif;
+        font-size: 12px;
+    }
+
+
+    .info {
+        background-color: $ms-blue;
+    }
+
+    .warning {
+        background-color: $ms-orangeLighter;
+    }
+
+    .error {
+        background-color: $ms-redDark;
+    }
+
+    .success {
+        background-color: $ms-green;
+    }
+
+
+
+    .container {
+        max-width: 700px;
+        margin: 0px auto;
+        box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.2), 0 25px 50px 0 rgba(0, 0, 0, 0.1);
+    }
+
+    .row {
+        @include ms-Grid-row;
+        @include ms-fontColor-white;
+        background-color: $ms-color-themeDark;
+        padding: 20px;
+    }
+
+    .column {
+        @include ms-Grid-col;
+        @include ms-lg10;
+        @include ms-xl8;
+        @include ms-xlPush2;
+        @include ms-lgPush1;
+    }
+
+    .title {
+        @include ms-font-xl;
+        @include ms-fontColor-white;
+    }
+
+    .subTitle {
+        @include ms-font-l;
+        @include ms-fontColor-white;
+    }
+
+    .description {
+        @include ms-font-l;
+        @include ms-fontColor-white;
+    }
+
+    .button {
+        // Our button
+        text-decoration: none;
+        height: 32px;
+
+        // Primary Button
+        min-width: 80px;
+        background-color: $ms-color-themePrimary;
+        border-color: $ms-color-themePrimary;
+        color: $ms-color-white;
+
+        // Basic Button
+        outline: transparent;
+        position: relative;
+        font-family: "Segoe UI WestEuropean", "Segoe UI", -apple-system, BlinkMacSystemFont, Roboto, "Helvetica Neue", sans-serif;
+        -webkit-font-smoothing: antialiased;
+        font-size: $ms-font-size-m;
+        font-weight: $ms-font-weight-regular;
+        border-width: 0;
+        text-align: center;
+        cursor: pointer;
+        display: inline-block;
+        padding: 0 16px;
+
+        .label {
+            font-weight: $ms-font-weight-semibold;
+            font-size: $ms-font-size-m;
+            height: 32px;
+            line-height: 32px;
+            margin: 0 4px;
+            vertical-align: top;
+            display: inline-block;
+        }
+    }
 }
